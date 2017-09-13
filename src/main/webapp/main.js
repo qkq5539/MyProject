@@ -9,7 +9,7 @@ angular.module("testApp", ["ngDraggable"]).controller("testController", ["$scope
 
         $.ajax("i18n/test.json", {async:false}).success(function (data) {
 
-            $scope.data = data.dataList;
+            $scope.data = data.data;
             console.log($scope.data);
         });
 
