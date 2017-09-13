@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="js/angular.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/ngDraggable.js"></script>
+    <script src="main.js"></script>
+
+</head>
+<body ng-app="testApp">
+    <div ng-controller="testController">
+    <h3 ng-bind="test"></h3>
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>age</th>
+                <th>tel</th>
+            </tr>
+        </thead>
+        <tbody ng-drop="true">
+            <tr ng-drop="true" ng-drop-success="dropComplete($index,$data)"
+                ng-repeat="item in data" style="cursor: pointer" ng-drag="true" ng-drag-data="item">
+                <td ng-bind="item.name"></td>
+                <td ng-bind="item.age"></td>
+                <td ng-bind="item.tel"></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <hr/>
+    <div ng-drop="true" ng-drop-success="dropComplete($index,$data)" ng-repeat="item in data">
+        <li ng-drag="true" ng-drag-data="item" >
+            name:{{item.name}},age:{{item.age}}
+        </li>
+    </div>
+</div>
+
+</body>
+</html>
