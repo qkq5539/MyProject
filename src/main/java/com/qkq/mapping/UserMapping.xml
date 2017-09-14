@@ -6,4 +6,8 @@
         INSERT INTO test VALUE (#{id},#{name},#{age})
     </insert>
 
+    <select id="queryUser" resultType="com.qkq.bean.User">
+        SELECT * FROM test;
+    </select>
+
 </mapper>

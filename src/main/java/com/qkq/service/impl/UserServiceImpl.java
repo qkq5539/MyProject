@@ -20,4 +20,8 @@ public class UserServiceImpl implements IUserService {
     public void addUser(User user) {
         userDao.insertUser(user);
     }
+
+    public User getUser() {
+        return userDao.queryUser();
+    }
 }
