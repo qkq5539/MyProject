@@ -2,11 +2,14 @@ package com.qkq.controller;
 
 import com.qkq.bean.User;
 import com.qkq.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.MessageSourceAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
+import java.util.Locale;
 
 /**
  * Created by Administrator on 2017/9/14 0014.
@@ -15,8 +18,12 @@ import javax.annotation.Resource;
 @RequestMapping(value = "/test")
 public class TestController {
 
-    @Resource(name = "userService")
+    @Autowired
+    private MessageSource messages;
+
+    @Autowired
     private IUserService userService;
+
 
     @RequestMapping(value = "/addUser", produces = "application/json")
     @ResponseBody
@@ -30,8 +37,9 @@ public class TestController {
 
     @RequestMapping(value = "/getUser", produces = "application/json")
     @ResponseBody
-    public User getUser() {
+    public User getUser(Locale locale) {
         User user = userService.getUser();
-        return  user;
+        System.out.println(messages.getMessage("title", new Object[]{}, locale));
+        return user;
     }
 }

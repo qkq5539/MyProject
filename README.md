@@ -1,2 +1,2 @@
 # MyProject
-Spring+SpringMVC+MyBatis
+Spring+SpringMVC+MyBatis+AngularJs

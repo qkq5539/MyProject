@@ -13,14 +13,36 @@
     <context:component-scan base-package="com.qkq"/>
 
     <!-- 配置视图解析器 -->
-    <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/view/" />
-        <property name="suffix" value=".html" />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".html"/>
     </bean>
 
     <mvc:default-servlet-handler/>
 
+    <!-- 国际化资源文件 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="messages.messages"/>
+    </bean>
 
+    <bean id="messageSourceAccessor" class="org.springframework.context.support.MessageSourceAccessor">
+        <constructor-arg ref="messageSource"/>
+    </bean>
 
+    <!-- 存储区域设置信息 -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="zh_CN"/>
+    </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--/**表示拦截所有请求-->
+            <mvc:mapping path="/**"/>
+            <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+                <!--<property name="paramName" value="lang"/>-->
+            </bean>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
 
 </beans>
