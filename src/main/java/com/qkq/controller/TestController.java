@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Locale;
-
 /**
  * Created by Administrator on 2017/9/14 0014.
  */
@@ -36,7 +34,7 @@ public class TestController {
 
     @RequestMapping(value = "/getUser", produces = "application/json")
     @ResponseBody
-    public User getUser(Locale locale) {
+    public User getUser() {
         User user = userService.getUser();
         System.out.println(messages.getMessage("title"));
         return user;
