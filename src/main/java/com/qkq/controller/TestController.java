@@ -3,8 +3,7 @@ package com.qkq.controller;
 import com.qkq.bean.User;
 import com.qkq.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.MessageSourceAware;
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +18,7 @@ import java.util.Locale;
 public class TestController {
 
     @Autowired
-    private MessageSource messages;
+    private MessageSourceAccessor messages;
 
     @Autowired
     private IUserService userService;
@@ -39,7 +38,7 @@ public class TestController {
     @ResponseBody
     public User getUser(Locale locale) {
         User user = userService.getUser();
-        System.out.println(messages.getMessage("title", new Object[]{}, locale));
+        System.out.println(messages.getMessage("title"));
         return user;
     }
 }

@@ -20,15 +20,6 @@
 
     <mvc:default-servlet-handler/>
 
-    <!-- 国际化资源文件 -->
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="messages.messages"/>
-    </bean>
-
-    <bean id="messageSourceAccessor" class="org.springframework.context.support.MessageSourceAccessor">
-        <constructor-arg ref="messageSource"/>
-    </bean>
-
     <!-- 存储区域设置信息 -->
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
         <property name="defaultLocale" value="zh_CN"/>
